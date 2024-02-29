@@ -80,6 +80,7 @@ const FormAddInformation = () => {
 
   const handleSubmit = (values: z.infer<typeof FormAddInformationSchema>) => {
     startTransition(() => {
+        //Using mutation => invalidateQueries[{ queryKey: ['...'] }]
         appState.handleSetData(values)
         push("/information/show")
     });
