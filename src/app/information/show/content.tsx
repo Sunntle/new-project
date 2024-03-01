@@ -39,7 +39,7 @@ const ContentDetail = () => {
 
 
   if (isDataEmpty) return <p className="text-center">Không có thông tin hiển thị</p>;
-
+  
   return (
     <div>
       <p>Họ và tên: {name}</p>
