@@ -12,16 +12,16 @@ import { DatePicker } from "./date-picker";
 import { addDays, format, subDays } from "date-fns";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MoveRight } from "lucide-react";
+import { ArrowLeftRight, MoveRight } from "lucide-react";
 const TicketFlightHome = () => {
   const [startDay, setStartDay] = useState(new Date());
   const [endDay, setEndDay] = useState(new Date());
   return (
     <div className="rounded-xl bg-white p-6 w-full shadow">
       <div className="flex gap-x-5">
-        <RadioGroup defaultValue="multi" className="flex">
+        <RadioGroup defaultValue="multi" className="flex z-10 accent-red-500">
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="one" id="r1" />
+            <RadioGroupItem value="one" id="r1" className="accent-red-500"/>
             <Label htmlFor="r1">One way/ Round-trip</Label>
           </div>
           <div className="flex items-center space-x-2">
@@ -54,17 +54,26 @@ const TicketFlightHome = () => {
         </Select>
       </div>
       <div className="flex gap-x-5 relative py-5">
-        <div className="border rounded-xl border-black/10 p-4 basis-1/4 font-semibold">
-          <p className="uppercase opacity-50">from</p>
-          <h3 className="text-main  capitalize text-xl">da nang</h3>
-          <p className=" capitalize">Quang nam, Viet Nam</p>
+        <div className="basis-2/4 flex gap-x-5 relative">
+        <div className="relative overflow-hidden basis-2/4 ">
+          <div className=" border rounded-xl border-black/10 p-4 font-semibold circle-right">
+            <p className="uppercase opacity-50">from</p>
+            <h3 className="text-main  capitalize text-xl">da nang</h3>
+            <p className=" capitalize">Quang nam, Viet Nam</p>
+          </div>
         </div>
-        <div className="border rounded-xl border-black/10 p-4 basis-1/4 font-semibold">
-          <p className="uppercase opacity-50">to</p>
-          <h3 className="text-main  capitalize text-xl">ho chi minh</h3>
-          <p className="capitalize">Viet Nam</p>
+        <div className="relative overflow-hidden basis-2/4 ">
+          <div className="border rounded-xl border-black/10 p-4 font-semibold circle-left ps-10">
+            <p className="uppercase opacity-50">to</p>
+            <h3 className="text-main  capitalize text-xl">ho chi minh</h3>
+            <p className="capitalize">Viet Nam</p>
+          </div>
         </div>
-        <div className=" border rounded-xl border-black/10 p-4 flex-1 font-semibold">
+        <div className="absolute top-2/4 -translate-y-2/4 -translate-x-2/4 left-2/4">
+        <ArrowLeftRight size={28}/>
+        </div>
+        </div>
+        <div className="border rounded-xl border-black/10 p-4 flex-1 font-semibold hover:border-main">
           <div className="flex justify-between">
             <div>
               <p className="uppercase opacity-50">departure</p>
@@ -72,7 +81,20 @@ const TicketFlightHome = () => {
                 {format(startDay, "EEE, dd MMM, yyyy")}
                 <DatePicker day={startDay} setDay={setStartDay} />
               </h3>
-              <div className="flex gap-x-2"><span className="cursor-pointer text-gray-400 hover:underline hover:text-black" onClick={()=>setStartDay(subDays(new Date(startDay), 1))}>Prev</span><span  className="cursor-pointer text-gray-400 hover:underline hover:text-black" onClick={()=>setStartDay(addDays(new Date(startDay), 1))}>Next</span></div>
+              <div className="flex gap-x-2">
+                <span
+                  className="cursor-pointer text-gray-400 hover:underline hover:text-black"
+                  onClick={() => setStartDay(subDays(new Date(startDay), 1))}
+                >
+                  Prev
+                </span>
+                <span
+                  className="cursor-pointer text-gray-400 hover:underline hover:text-black"
+                  onClick={() => setStartDay(addDays(new Date(startDay), 1))}
+                >
+                  Next
+                </span>
+              </div>
             </div>
             <div>
               <p className="uppercase opacity-50">return</p>
@@ -80,12 +102,31 @@ const TicketFlightHome = () => {
                 {format(endDay, "EEE, dd MMM, yyyy")}
                 <DatePicker day={endDay} setDay={setEndDay} />
               </h3>
-              <div className="flex gap-x-2"><span  className="cursor-pointer text-gray-400 hover:underline hover:text-black" onClick={()=>setEndDay(subDays(new Date(endDay), 1))}>Prev</span><span  className="cursor-pointer text-gray-400 hover:underline hover:text-black" onClick={()=>setEndDay(addDays(new Date(endDay), 1))}>Next</span></div>
+              <div className="flex gap-x-2">
+                <span
+                  className="cursor-pointer text-gray-400 hover:underline hover:text-black"
+                  onClick={() => setEndDay(subDays(new Date(endDay), 1))}
+                >
+                  Prev
+                </span>
+                <span
+                  className="cursor-pointer text-gray-400 hover:underline hover:text-black"
+                  onClick={() => setEndDay(addDays(new Date(endDay), 1))}
+                >
+                  Next
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="absolute translate-y-full bottom-0 right-0"><Button size={"lg"} className="text-white bg-main hover:bg-blue-700 rounded-xl">Search Flights <MoveRight className="ms-5"/></Button></div>
-
+        <div className="absolute translate-y-full bottom-0 right-0">
+          <Button
+            size={"lg"}
+            className="text-white bg-main hover:bg-blue-700 rounded-xl"
+          >
+            Search Flights <MoveRight className="ms-5" />
+          </Button>
+        </div>
       </div>
     </div>
   );

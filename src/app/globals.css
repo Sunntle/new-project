@@ -92,3 +92,15 @@
   @apply font-semibold text-main
 }
 
+.circle-right{
+
+  @apply after:content-[''] after:absolute after:aspect-square after:h-3/5 after:bg-white after:top-2/4 after:right-0 after:translate-x-2/3 after:-translate-y-2/4 after:border after:rounded-full 
+}
+.circle-left:hover, .circle-right:hover{
+  border-color: var(--main);
+  @apply before:border-main after:border-main
+}
+
+.circle-left{
+  @apply before:content-[''] before:absolute before:aspect-square  before:h-3/5  before:bg-white before:top-2/4 before:left-0 before:-translate-x-2/3 before:-translate-y-2/4 before:border before:rounded-full 
+}

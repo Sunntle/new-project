@@ -25,4 +25,5 @@ const FILTER = [
     options: [{ label: "test", data: "test" }],
   },
 ];
+
 export { GENDER, FILTER };
