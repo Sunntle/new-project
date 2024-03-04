@@ -19,13 +19,13 @@ const TicketFlightHome = () => {
   return (
     <div className="rounded-xl bg-white p-6 w-full shadow">
       <div className="flex gap-x-5">
-        <RadioGroup defaultValue="multi" className="flex z-10 accent-red-500">
+        <RadioGroup defaultValue="multi" className="flex z-10 ">
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="one" id="r1" className="accent-red-500"/>
-            <Label htmlFor="r1">One way/ Round-trip</Label>
+            <RadioGroupItem value="one" id="r1" className="text-white focus:border-main border-gray-200 focus:bg-main bg-gray-200"/>
+            <Label htmlFor="r1">One way/ Round-trip</Label>white
           </div>
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="multi" id="r2" />
+            <RadioGroupItem value="multi" id="r2" className="text-white focus:border-main border-gray-200 focus:bg-main bg-gray-200"/>
             <Label htmlFor="r2">Multi-city</Label>
           </div>
         </RadioGroup>
